@@ -17,7 +17,7 @@
         "symfony/http-client": "^7.3||^8.0",
         "symfony/string": "^7.3||^8.0",
         "symfony/validator": "^7.3||^8.0",
-        "survos/babel-bundle": "^2.0"
+        "survos/babel-bundle": "^2.5"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.0",
