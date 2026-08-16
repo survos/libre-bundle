@@ -49,7 +49,10 @@ class SurvosLibreTranslateBundle extends AbstractBundle
     {
         $definition->rootNode()
             ->children()
-            ->scalarNode('server')->defaultValue('http://translation-server.survos.com')->end()
+            // lingua, not LibreTranslate. Same env var lingua-bundle uses, so one setting
+            // aims every client at lingua.wip. Empty (var unset) falls back to
+            // TranslationClientService::DEFAULT_SERVER.
+            ->scalarNode('server')->defaultValue('%env(default::LINGUA_BASE_URI)%')->end()
             ->scalarNode('host')->defaultValue('http://127.0.0.1')->end()
             ->scalarNode('port')->defaultValue('5000')->end()
             ->scalarNode('apikey')->info("the libretranslate API Key")->defaultValue(null)->end()
