@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /** generated from /home/tac/ca/survos/packages/maker-bundle/templates/skeleton/bundle/src/Bundle.tpl.php */
 
 namespace Survos\LibreTranslateBundle;
@@ -16,7 +19,6 @@ class SurvosLibreTranslateBundle extends AbstractBundle
 {
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
-
         $builder->register(TranslationClientService::class)
             ->setAutoconfigured(true)
             ->setAutowired(true)
@@ -35,14 +37,12 @@ class SurvosLibreTranslateBundle extends AbstractBundle
         $definition->setArgument('$port', $config['port']);
 
         foreach ([
-//                     IterateCommand::class
-                 ]
-                 as $commandClass) {
+            //                     IterateCommand::class
+        ] as $commandClass) {
             $builder->autowire($commandClass)
                 ->setAutoconfigured(true)
                 ->addTag('console.command');
         }
-
     }
 
     public function configure(DefinitionConfigurator $definition): void
@@ -55,13 +55,12 @@ class SurvosLibreTranslateBundle extends AbstractBundle
             ->scalarNode('server')->defaultValue('%env(default::LINGUA_BASE_URI)%')->end()
             ->scalarNode('host')->defaultValue('http://127.0.0.1')->end()
             ->scalarNode('port')->defaultValue('5000')->end()
-            ->scalarNode('apikey')->info("the libretranslate API Key")->defaultValue(null)->end()
+            ->scalarNode('apikey')->info('the libretranslate API Key')->defaultValue(null)->end()
 //            ->scalarNode('sourceLanguage')->defaultValue(null)->end()
 //            ->scalarNode('targetLanguage')->defaultValue(null)->end()
             ->booleanNode('canManage')->defaultTrue()->end()
-            ->booleanNode('enableBing')->defaultFalse()->info("if translation is identical, try bing")->end()
+            ->booleanNode('enableBing')->defaultFalse()->info('if translation is identical, try bing')->end()
 //            ->integerNode('min_sunshine')->defaultValue(3)->end()
             ->end();
     }
-
 }
